@@ -1,0 +1,67 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Crawl URL",
+      "description": "API for interacting with Firecrawl services to perform web scraping and crawling tasks.",
+      "version": "v1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://172.31.46.203:3002/v1"
+      }
+    ],
+    "paths": {
+      "/scrape": {
+        "post": {
+            "description": "Scrape a single URL and optionally extract information using an LLM.",
+            "operationId": "ScrapeURL",
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The URL to be scraped"
+                      }
+                    },
+                    "required": ["url"]
+                  }
+                }
+              }
+            }
+        }
+      },
+      "/crawl": {
+        "post": {
+          "description": "Crawl the specified URL",
+          "operationId": "CrawlURL",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The URL to be crawled"
+                    }
+                  },
+                  "required": ["url"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {}
+    }
+  }
+  
